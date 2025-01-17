@@ -13,10 +13,10 @@ app.use(json())
 app.use(cors());
 
 dotenv.config();
-
+const MongoURL : any = process.env.MONGO_URL;
 (async () => {
     try {
-        await mongoose.connect('mongodb://localhost/by', { retryWrites: true, w: 'majority' });
+        await mongoose.connect( MongoURL, { retryWrites: true, w: 'majority' });
         console.log('Connected to MongoDB');
 
     } catch (error) {
